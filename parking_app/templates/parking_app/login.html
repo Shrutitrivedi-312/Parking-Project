@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    
+    <style>
+    body, html {
+            margin: 20px; /* Add space around the edges of the screen */
+            padding: 0;
+            width: calc(100% - 40px); /* Adjust width after adding margin */
+            height: calc(100% - 40px); /* Adjust height after adding margin */
+        }
+        body {
+            background-image: url("{% static 'parking_app/img/background2.jpeg' %}"); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .headin{
+            font-size: large;
+            position: relative;
+            left: 5%;
+            top: -5%;
+            color: #00000d;
+        }
+        .headin h1{
+            font-size:64px;
+        }
+        .headin h2{
+            font-size: 28px;
+            resize: horizontal;
+        }
+        .para{
+            font-size: medium; 
+            position: relative;
+            right: 5%;
+            top: -25%;
+            justify-content: center;
+            justify-self: left;
+            resize: horizontal;
+            width: 50%;
+        }
+        .placard {
+            position: absolute;
+            width: 50%; /* 2/4 of the width */
+            height: 65%; /* 3/5 of the height */
+            left: 25%; /* Center horizontally */
+            background-color: rgba(255, 255, 255, 0.5); /* 50% opacity */
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            color: #333;
+            border-radius: 2.5%;
+        }
+        .placard:nth-child(1) {
+            top: 20%; /* Position of the first placard (adjusted to create space) */
+        }
+        
+        .image {
+            position: absolute;
+            width: 15%; /* Width of the image */
+            height: auto; /* Maintain aspect ratio */
+            left: 80%; /* To the right of the placards */
+            border-radius: 5%;
+        }
+        .image:nth-child(3) {
+            top: 25%; /* Positioned below 25% of the top of the first placard */
+        }
+        .image:nth-child(4) {
+            top: 100%; /* Positioned below 25% of the top of the second placard */
+        }
+        .search-box {
+            position: absolute;
+            width: 20%; /* Width of the search box */
+            left: 80%; /* To the right of the placards */
+            padding: 5px; /* Add padding inside the search box */
+            border-radius: 5%;
+        }
+        .search-box:nth-child(5) {
+            top: 67.5%; /* Below the first image */
+        }
+        .search-box:nth-child(6) {
+            top: 142.5%; /* Below the second image */
+        }
+        .header {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items:center;
+            justify-content: space-between; /* Ensures even spacing */
+            padding: 10px 20px;
+            padding-left: 50%;
+            padding-right: 2%;
+            justify-self: right;
+            
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-self:right;
+            
+        }
+        .logo img {
+            width: 50px; /* Logo image size */
+            height: 50px;
+            margin-left: 25%;
+            margin-right: 10%;
+        }
+        .logo-name {
+            font-family:'Times New Roman', Times, serif;
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px; /* Space between buttons */
+        }
+        .btn{
+            display:contents;
+            position: relative;
+            justify-content: center;
+            justify-self: left;
+            left: 10%;
+            gap: 10px;
+            width: 70%;
+            
+
+        }
+        .btn button{
+            padding: 5px 10px;
+            margin-top: 70%;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+            color: #333;
+            position: relative;
+            top: 10%;
+            bottom: 50%;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .nav-buttons button {
+            padding: 5px 10px;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .nav-buttons button:hover {
+            background-color: #f0f0f0; /* Lighter background on hover */
+        }
+        @media screen and (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack header items */
+                align-items: center;
+                padding: 10px;
+            }
+            .content {
+                display: flex;
+                flex-direction: column; /* Stack items vertically */
+                align-items: center;
+            }
+            .placard {
+                position: static; /* Make placards follow document flow */
+                width: 90%; /* Adjust width for smaller screens */
+                margin: 10px 0; /* Space between items */
+            }
+            .image, .search-box {
+                position: absolute;
+                top: 60%;
+                width: 60%; /* Adjust width */
+            }
+            .para{
+                font-size: small;
+                resize: both;
+            }
+        }
+</style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'parking_app/img/logo.jpg' %}" alt="Logo">
+            <div class="logo-name">LAvence-park</div>
+        </div>
+        <div class="nav-buttons">
+            <button type="button" onclick="window.location.href='{% url 'about' %}'">About Us</button>
+            <button type="button" onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+        </div>
+    </div>
+
+    <div class="placard">
+        <form method="POST" action="{% url 'process_login' %}" style="margin-left: 5%;">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit" style="height: 30px; justify-self: left; width: 300px;">Login</button>
+        </form>
+    </div>
+</body>
+</html>
